@@ -27,6 +27,8 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sh './jenkins/scripts/deliver.sh' 
+                echo 'Aplikasi berhasil di-deploy. Menjeda eksekusi pipeline selama 1 menit...'
+                sleep time: 60, unit: 'SECONDS' // Menjeda eksekusi pipeline selama 1 menit
                 sh './jenkins/scripts/kill.sh' 
             }
         }
